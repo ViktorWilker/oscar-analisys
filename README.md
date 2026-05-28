@@ -1,6 +1,6 @@
 # 🏆 Oscar — Exercícios MongoDB
 
-> Gerado automaticamente em 28/05/2026 00:16
+> Gerado automaticamente em 28/05/2026 00:25
 
 ---
 
@@ -17,7 +17,7 @@ db.indicados.countDocuments({})
 
 **Resultado**
 
-`11104`
+`10793`
 
 ---
 
@@ -44,14 +44,14 @@ db.indicados.distinct("categoria")
 - `ART DIRECTION (Color)`
 - `ASSISTANT DIRECTOR`
 - `AWARD OF COMMENDATION`
+- `BEST INTERNATIONAL FEATURE FILM`
 - `BEST MOTION PICTURE`
 - `BEST PICTURE`
 - `CASTING`
 - `CINEMATOGRAPHY`
 - `CINEMATOGRAPHY (Black-and-White)`
 - `CINEMATOGRAPHY (Color)`
-- `COSTUME DESIGN`
-- _... e mais 102 itens_
+- _... e mais 95 itens_
 
 ---
 
@@ -116,7 +116,7 @@ db.indicados.aggregate([{$group: {_id: "$categoria", total: {$sum: 1}}}, {$sort:
 | FILM EDITING | 460 |
 | ACTOR IN A SUPPORTING ROLE | 445 |
 | ACTRESS IN A SUPPORTING ROLE | 445 |
-| BEST PICTURE | 391 |
+| BEST PICTURE | 394 |
 | DOCUMENTARY (Short Subject) | 378 |
 | CINEMATOGRAPHY | 348 |
 | DOCUMENTARY (Feature) | 345 |
@@ -133,7 +133,7 @@ db.indicados.aggregate([{$group: {_id: "$categoria", total: {$sum: 1}}}, {$sort:
 | SHORT FILM (Live Action) | 226 |
 | SHORT FILM (Animated) | 215 |
 
-_... e mais 102 registros_
+_... e mais 95 registros_
 
 ---
 
@@ -166,7 +166,7 @@ db.indicados.aggregate([{$group: {_id: "$categoria", total: {$sum: 1}}}, {$sort:
 
 | Campo | Valor |
 |---|---|
-| `_id` | `SPECIAL ACHIEVEMENT AWARD (Sound Editing)` |
+| `_id` | `WRITING (Title Writing)` |
 | `total` | `1` |
 
 ---
@@ -195,18 +195,17 @@ db.indicados.distinct("categoria", {ano_cerimonia: 1928})
 
 **Resultado**
 
-- `ACTOR`
 - `WRITING (Title Writing)`
-- `WRITING (Adaptation)`
-- `ART DIRECTION`
 - `DIRECTING (Comedy Picture)`
 - `ENGINEERING EFFECTS`
-- `ACTRESS`
-- `OUTSTANDING PICTURE`
-- `DIRECTING (Dramatic Picture)`
-- `SPECIAL AWARD`
 - `WRITING (Original Story)`
+- `ACTOR`
+- `DIRECTING (Dramatic Picture)`
+- `WRITING (Adaptation)`
+- `OUTSTANDING PICTURE`
+- `ACTRESS`
 - `UNIQUE AND ARTISTIC PICTURE`
+- `ART DIRECTION`
 
 ---
 
@@ -460,7 +459,7 @@ db.indicados.countDocuments({vencedor: true})
 
 **Resultado**
 
-`2507`
+`2219`
 
 ---
 
@@ -508,7 +507,7 @@ db.indicados.distinct("nome_do_filme", {vencedor: true}).length
 
 **Resultado**
 
-`1354`
+`1353`
 
 ---
 
@@ -530,7 +529,7 @@ db.indicados.aggregate([{$group: {_id: "$nome_do_indicado", indicacoes: {$sum: 1
 | Metro-Goldwyn-Mayer | 64 |
 | Walt Disney, Producer | 59 |
 | John Williams | 46 |
-| Warner Bros. | 44 |
+| Warner Bros. | 43 |
 | France | 38 |
 | Alfred Newman | 34 |
 | Italy | 29 |
@@ -545,10 +544,10 @@ db.indicados.aggregate([{$group: {_id: "$nome_do_indicado", indicacoes: {$sum: 1
 | Woody Allen | 18 |
 | Leon Shamroy | 17 |
 | Pete Smith, Producer | 16 |
-| Jerry Goldsmith | 16 |
+| Sweden | 16 |
 | Max Steiner | 16 |
 
-_... e mais 1431 registros_
+_... e mais 1410 registros_
 
 ---
 
@@ -582,27 +581,27 @@ db.indicados.aggregate([{$group: {_id: "$nome_do_indicado", indicacoes: {$sum: 1
 | _id | indicacoes | vitorias |
 |---|---|---|
 | Thomas Newman | 14 | 0 |
+| Alex North | 14 | 0 |
 | George Folsey | 12 | 0 |
 | Music and Lyric by Diane Warren | 11 | 0 |
-| Paramount Studio Sound Department, Loren L. Ryder, Sound Director | 10 | 0 |
-| Walter Lantz, Producer | 10 | 0 |
 | Israel | 10 | 0 |
+| Walter Lantz, Producer | 10 | 0 |
+| Paramount Studio Sound Department, Loren L. Ryder, Sound Director | 10 | 0 |
 | Randy Newman | 9 | 0 |
-| Peter O'Toole | 8 | 0 |
-| Robert Emmett Dolan | 8 | 0 |
-| Glenn Close | 8 | 0 |
+| Ingmar Bergman | 8 | 0 |
 | Belgium | 8 | 0 |
-| Bill Thomas | 7 | 0 |
+| Peter O'Toole | 8 | 0 |
+| Glenn Close | 8 | 0 |
+| Robert Emmett Dolan | 8 | 0 |
 | Richard Burton | 7 | 0 |
-| George Pal, Producer | 7 | 0 |
 | James Newton Howard | 7 | 0 |
-| Bruno Delbonnel | 6 | 0 |
-| RKO Radio Studio Sound Department, John Aalberg, Sound Director | 6 | 0 |
-| Caleb Deschanel | 6 | 0 |
-| Yugoslavia | 6 | 0 |
-| Leon Schlesinger, Producer | 6 | 0 |
+| Bill Thomas | 7 | 0 |
+| George Pal, Producer | 7 | 0 |
+| Amy Adams | 6 | 0 |
+| Samuel Goldwyn Studio Sound Department, Thomas T. Moulton, Sound Director | 6 | 0 |
+| Ernest Haller | 6 | 0 |
 
-_... e mais 96 registros_
+_... e mais 104 registros_
 
 ---
 
@@ -618,28 +617,28 @@ db.indicados.aggregate([{$group: {_id: "$nome_do_indicado", categorias: {$addToS
 
 | _id | categorias |
 |---|---|
-| 20th Century-Fox | ['OUTSTANDING MOTION PICTURE', 'SHORT SUBJECT (Cartoon)', 'BEST MOTION PICTURE', 'SHORT SUBJECT (One-reel)', 'OUTSTANDING PRODUCTION'] |
+| 20th Century-Fox | ['SHORT SUBJECT (One-reel)', 'OUTSTANDING PRODUCTION', 'SHORT SUBJECT (Cartoon)', 'OUTSTANDING MOTION PICTURE', 'BEST MOTION PICTURE'] |
 | 20th Century-Fox Studio Sound Department, Carl Faulkner, Sound Director | ['SOUND RECORDING', 'SOUND'] |
-| Aaron Copland | ['MUSIC (Scoring)', 'MUSIC (Music Score of a Dramatic or Comedy Picture)', 'MUSIC (Original Score)'] |
+| Aaron Copland | ['MUSIC (Music Score of a Dramatic or Comedy Picture)', 'MUSIC (Original Score)', 'MUSIC (Scoring)'] |
 | Adam Driver | ['ACTOR IN A LEADING ROLE', 'ACTOR IN A SUPPORTING ROLE'] |
 | Adaptation Score by Leonard Rosenman | ['MUSIC (Scoring: Original Song Score and Adaptation -or- Scoring: Adaptation)', 'MUSIC (Original Song Score and Its Adaptation or Adaptation Score)'] |
-| Adaptation Score by Ralph Burns | ['MUSIC (Original Song Score and Its Adaptation -or- Adaptation Score)', 'MUSIC (Scoring: Adaptation and Original Song Score)'] |
-| Al Pacino | ['ACTOR IN A SUPPORTING ROLE', 'ACTOR IN A LEADING ROLE', 'ACTOR'] |
-| Alan Arkin | ['ACTOR IN A SUPPORTING ROLE', 'ACTOR'] |
-| Alan J. Pakula | ['DIRECTING', 'WRITING (Screenplay Based on Material from Another Medium)'] |
+| Adaptation Score by Ralph Burns | ['MUSIC (Scoring: Adaptation and Original Song Score)', 'MUSIC (Original Song Score and Its Adaptation -or- Adaptation Score)'] |
+| Al Pacino | ['ACTOR IN A LEADING ROLE', 'ACTOR', 'ACTOR IN A SUPPORTING ROLE'] |
+| Alan Arkin | ['ACTOR', 'ACTOR IN A SUPPORTING ROLE'] |
+| Alan J. Pakula | ['WRITING (Screenplay Based on Material from Another Medium)', 'DIRECTING'] |
 | Alan Jay Lerner | ['WRITING (Story and Screenplay)', 'WRITING (Screenplay--based on material from another medium)'] |
 | Alan Robert Murray, Bub Asman | ['SOUND EDITING', 'SOUND EFFECTS EDITING'] |
 | Albert Finney | ['ACTOR IN A LEADING ROLE', 'ACTOR IN A SUPPORTING ROLE', 'ACTOR'] |
-| Alec Guinness | ['WRITING (Screenplay--based on material from another medium)', 'ACTOR IN A SUPPORTING ROLE', 'ACTOR'] |
-| Alex North | ['MUSIC (Original Dramatic Score)', 'MUSIC (Original Score)', 'MUSIC (Original Music Score)', 'MUSIC (Music Score of a Dramatic or Comedy Picture)', 'MUSIC (Music Score--substantially original)', 'HONORARY AWARD', 'MUSIC (Original Score--for a motion picture [not a musical])'] |
-| Alexandre Desplat | ['MUSIC (ORIGINAL SCORE)', 'MUSIC (Original Score)'] |
-| Alfonso Cuarón | ['DIRECTING', 'CINEMATOGRAPHY'] |
-| Alfred Hitchcock | ['DIRECTING', 'IRVING G. THALBERG MEMORIAL AWARD'] |
-| Alfred Newman | ['MUSIC (Music Score--substantially original)', 'MUSIC (Music Score of a Dramatic or Comedy Picture)', 'MUSIC (Music Score of a Dramatic Picture)', 'MUSIC (Scoring)', 'MUSIC (Original Score)', 'MUSIC (Scoring of a Musical Picture)'] |
-| Alfred Newman, Ken Darby | ['MUSIC (Scoring of Music--adaptation or treatment)', 'MUSIC (Music Score--substantially original)', 'MUSIC (Scoring of a Musical Picture)'] |
+| Alec Guinness | ['ACTOR', 'ACTOR IN A SUPPORTING ROLE', 'WRITING (Screenplay--based on material from another medium)'] |
+| Alex North | ['MUSIC (Original Dramatic Score)', 'MUSIC (Original Score)', 'MUSIC (Original Score--for a motion picture [not a musical])', 'MUSIC (Music Score--substantially original)', 'MUSIC (Music Score of a Dramatic or Comedy Picture)', 'MUSIC (Original Music Score)'] |
+| Alexandre Desplat | ['MUSIC (Original Score)', 'MUSIC (ORIGINAL SCORE)'] |
+| Alfonso Cuarón | ['CINEMATOGRAPHY', 'DIRECTING'] |
+| Alfred Newman | ['MUSIC (Scoring)', 'MUSIC (Scoring of a Musical Picture)', 'MUSIC (Music Score of a Dramatic or Comedy Picture)', 'MUSIC (Music Score of a Dramatic Picture)', 'MUSIC (Music Score--substantially original)', 'MUSIC (Original Score)'] |
+| Alfred Newman, Ken Darby | ['MUSIC (Music Score--substantially original)', 'MUSIC (Scoring of a Musical Picture)', 'MUSIC (Scoring of Music--adaptation or treatment)'] |
 | Alvin Sargent | ['WRITING (Screenplay Based on Material from Another Medium)', 'WRITING (Screenplay--based on material from another medium)'] |
+| Amy Adams | ['ACTRESS IN A SUPPORTING ROLE', 'ACTRESS IN A LEADING ROLE'] |
 
-_... e mais 628 registros_
+_... e mais 593 registros_
 
 ---
 
@@ -653,7 +652,7 @@ db.indicados.aggregate([{$group: {_id: "$nome_do_indicado", indicacoes: {$sum: 1
 
 **Resultado**
 
-`5731`
+`5515`
 
 ---
 
@@ -670,7 +669,7 @@ db.indicados.aggregate([{$group: {_id: "$ano_cerimonia", total: {$sum: 1}}}, {$s
 | Campo | Valor |
 |---|---|
 | `_id` | `1943` |
-| `total` | `186` |
+| `total` | `182` |
 
 ---
 
@@ -1102,8 +1101,8 @@ db.indicados.aggregate([{$match: {vencedor: true}}, {$group: {_id: {filme: "$nom
 
 | _id | categorias_vencidas |
 |---|---|
-| {'filme': 'Ben-Hur', 'ano': 1960} | 11 |
 | {'filme': 'The Lord of the Rings: The Return of the King', 'ano': 2004} | 11 |
+| {'filme': 'Ben-Hur', 'ano': 1960} | 11 |
 | {'filme': 'Titanic', 'ano': 1998} | 11 |
 | {'filme': 'West Side Story', 'ano': 1962} | 10 |
 | {'filme': 'The English Patient', 'ano': 1997} | 9 |
@@ -1111,17 +1110,17 @@ db.indicados.aggregate([{$match: {vencedor: true}}, {$group: {_id: {filme: "$nom
 | {'filme': 'The Last Emperor', 'ano': 1988} | 9 |
 | {'filme': 'From Here to Eternity', 'ano': 1954} | 8 |
 | {'filme': 'Slumdog Millionaire', 'ano': 2009} | 8 |
-| {'filme': 'My Fair Lady', 'ano': 1965} | 8 |
-| {'filme': 'Gone with the Wind', 'ano': 1940} | 8 |
 | {'filme': 'Cabaret', 'ano': 1973} | 8 |
+| {'filme': 'On the Waterfront', 'ano': 1955} | 8 |
 | {'filme': 'Amadeus', 'ano': 1985} | 8 |
 | {'filme': 'Gandhi', 'ano': 1983} | 8 |
-| {'filme': 'On the Waterfront', 'ano': 1955} | 8 |
-| {'filme': 'Everything Everywhere All at Once', 'ano': 2023} | 7 |
-| {'filme': "Schindler's List", 'ano': 1994} | 7 |
-| {'filme': 'Patton', 'ano': 1971} | 7 |
-| {'filme': 'Gravity', 'ano': 2014} | 7 |
+| {'filme': 'My Fair Lady', 'ano': 1965} | 8 |
+| {'filme': 'Gone with the Wind', 'ano': 1940} | 8 |
 | {'filme': 'The Sting', 'ano': 1974} | 7 |
+| {'filme': 'Everything Everywhere All at Once', 'ano': 2023} | 7 |
+| {'filme': 'Shakespeare in Love', 'ano': 1999} | 7 |
+| {'filme': 'Gravity', 'ano': 2014} | 7 |
+| {'filme': 'Patton', 'ano': 1971} | 7 |
 
 _... e mais 345 registros_
 
@@ -1181,8 +1180,8 @@ db.indicados.aggregate([{$group: {_id: {filme: "$nome_do_filme", ano: "$ano_ceri
 |---|---|
 | `_id` | | Campo | Valor |
 |---|---|
-| `filme` | `La La Land` |
-| `ano` | `2017` | |
+| `filme` | `Titanic` |
+| `ano` | `1998` | |
 | `total` | `14` |
 
 ---
@@ -1199,16 +1198,16 @@ db.indicados.aggregate([{$group: {...}}, {$project: {taxa: {$multiply: [{$divide
 
 | _id | indicacoes | vitorias | filme | taxa |
 |---|---|---|---|---|
-| The Cat Concerto | 1 | 1 | The Cat Concerto | 100.0 |
-| Two Distant Strangers | 1 | 1 | Two Distant Strangers | 100.0 |
-| Underworld | 1 | 1 | Underworld | 100.0 |
-| The Neighbors' Window | 1 | 1 | The Neighbors' Window | 100.0 |
-| That Mothers Might Live | 1 | 1 | That Mothers Might Live | 100.0 |
-| Father and Daughter | 1 | 1 | Father and Daughter | 100.0 |
-| Number Our Days | 1 | 1 | Number Our Days | 100.0 |
-| The Hellstrom Chronicle | 1 | 1 | The Hellstrom Chronicle | 100.0 |
-| Women--for America, for the World | 1 | 1 | Women--for America, for the World | 100.0 |
-| All about My Mother | 1 | 1 | All about My Mother | 100.0 |
+| God of Love | 1 | 1 | God of Love | 100.0 |
+| This Tiny World | 1 | 1 | This Tiny World | 100.0 |
+| The Phone Call | 1 | 1 | The Phone Call | 100.0 |
+| Speedy Gonzales | 1 | 1 | Speedy Gonzales | 100.0 |
+| Paperman | 1 | 1 | Paperman | 100.0 |
+| the accountant | 1 | 1 | the accountant | 100.0 |
+| Interviews with My Lai Veterans | 1 | 1 | Interviews with My Lai Veterans | 100.0 |
+| The Queen of Basketball | 1 | 1 | The Queen of Basketball | 100.0 |
+| The Golden Fish | 1 | 1 | The Golden Fish | 100.0 |
+| Captain Carey, U.S.A. | 1 | 1 | Captain Carey, U.S.A. | 100.0 |
 
 ---
 
@@ -1316,15 +1315,15 @@ db.indicados.aggregate([{$match: {vencedor: true}}, {$group: {_id: "$nome_do_fil
 | _id | oscars |
 |---|---|
 | Titanic | 12 |
-| West Side Story | 11 |
 | Ben-Hur | 11 |
 | The Lord of the Rings: The Return of the King | 11 |
+| West Side Story | 11 |
+| The Last Emperor | 9 |
 | Gigi | 9 |
 | The English Patient | 9 |
-| The Last Emperor | 9 |
-| On the Waterfront | 8 |
+| Gone with the Wind | 8 |
+| Cabaret | 8 |
 | Amadeus | 8 |
-| From Here to Eternity | 8 |
 
 ---
 
@@ -1348,7 +1347,7 @@ db.indicados.aggregate([{$group: {_id: "$nome_do_indicado", indicacoes: {$sum: 1
 | Alfred Newman | 34 |
 | Italy | 29 |
 | Paramount | 25 |
-| Spain | 22 |
+| RKO Radio | 22 |
 | Gordon Hollingshead, Producer | 22 |
 
 ---
@@ -1365,26 +1364,26 @@ db.indicados.aggregate([{$group: {_id: "$nome_do_indicado", indicacoes: {$sum: 1
 
 | _id | indicacoes | vitorias |
 |---|---|---|
-| Thomas Newman | 14 | 0 |
 | Alex North | 14 | 0 |
+| Thomas Newman | 14 | 0 |
 | George Folsey | 12 | 0 |
 | Music and Lyric by Diane Warren | 11 | 0 |
-| Paramount Studio Sound Department, Loren L. Ryder, Sound Director | 10 | 0 |
-| Walter Lantz, Producer | 10 | 0 |
 | Israel | 10 | 0 |
+| Walter Lantz, Producer | 10 | 0 |
+| Paramount Studio Sound Department, Loren L. Ryder, Sound Director | 10 | 0 |
 | Randy Newman | 9 | 0 |
+| Ingmar Bergman | 8 | 0 |
+| Belgium | 8 | 0 |
 | Robert Emmett Dolan | 8 | 0 |
 | Glenn Close | 8 | 0 |
 | Peter O'Toole | 8 | 0 |
-| Ingmar Bergman | 8 | 0 |
-| Belgium | 8 | 0 |
-| Richard Burton | 7 | 0 |
-| James Newton Howard | 7 | 0 |
-| George Pal, Producer | 7 | 0 |
 | Bill Thomas | 7 | 0 |
-| Herbert Morgan, Producer | 6 | 0 |
-| Edward Cronjager | 6 | 0 |
-| Russell Harlan | 6 | 0 |
+| George Pal, Producer | 7 | 0 |
+| James Newton Howard | 7 | 0 |
+| Richard Burton | 7 | 0 |
+| Deborah Kerr | 6 | 0 |
+| Leon Schlesinger, Producer | 6 | 0 |
+| Gerry Hambling | 6 | 0 |
 
 _... e mais 17 registros_
 
@@ -1439,9 +1438,9 @@ db.indicados.aggregate([{$group: {_id: {categoria, ano}, indicados: {$sum: 1}}},
 | WRITING | 5.5 |
 | ART DIRECTION | 5.203389830508475 |
 | MUSIC (Original Dramatic Score) | 5.125 |
-| WRITING (Screenplay--based on material from another medium) | 5.0 |
+| MUSIC (ORIGINAL SCORE) | 5.0 |
 | ACTOR IN A LEADING ROLE | 5.0 |
-| WRITING (Screenplay Based on Material from Another Medium) | 5.0 |
+| ACTRESS IN A SUPPORTING ROLE | 5.0 |
 
 _... e mais 95 registros_
 
@@ -1459,26 +1458,26 @@ db.indicados.aggregate([{$group: {_id: '$nome_do_filme', anos: {$addToSet: '$ano
 
 | _id | anos | categorias_vencidas |
 |---|---|---|
-| Grand Canyon | [1959, 1992] | [{'categoria': 'SHORT SUBJECT (Live Action)', 'ano': 1959}, None] |
-| Emma | [2021, 1932, 1997] | [None, None, {'categoria': 'MUSIC (Original Musical or Comedy Score)', 'ano': 1997}, None, None] |
-| The Illusionist | [2007, 2011] | [None, None] |
-| A Star Is Born | [1977, 1955, 2019, 1938] | [None, None, None, None, None, {'categoria': 'WRITING (Original Story)', 'ano': 1938}, None, None, None, None, None, None, None, None, None, {'categoria': 'MUSIC (Original Song)', 'ano': 1977}, None, None, None, None, None, {'categoria': 'MUSIC (Original Song)', 'ano': 2019}, None, None, None] |
-| Men in Black | [1998, 1935] | [None, None, {'categoria': 'MAKEUP', 'ano': 1998}, None] |
-| First Love | [1940, 1971] | [None, None, None, None] |
-| The Hurricane | [2000, 1938] | [None, None, {'categoria': 'SOUND RECORDING', 'ano': 1938}, None] |
-| The Jungle Book | [2017, 1968] | [None, {'categoria': 'VISUAL EFFECTS', 'ano': 2017}] |
-| Holiday | [1939, 1931] | [None, None, None] |
-| The Time Machine | [1961, 2003] | [{'categoria': 'SPECIAL EFFECTS', 'ano': 1961}, None] |
-| Pinocchio | [2021, 1941] | [{'categoria': 'MUSIC (Original Score)', 'ano': 1941}, {'categoria': 'MUSIC (Song)', 'ano': 1941}, None, None] |
-| The Quiet One | [1949, 1950] | [None, None] |
-| Amarcord | [1976, 1975] | [{'categoria': 'FOREIGN LANGUAGE FILM', 'ano': 1975}, None, None] |
-| Tango | [1999, 1983] | [{'categoria': 'SHORT FILM (Animated)', 'ano': 1983}, None] |
-| Hamlet | [1997, 1949, 1991] | [{'categoria': 'ACTOR', 'ano': 1949}, None, {'categoria': 'ART DIRECTION (Black-and-White)', 'ano': 1949}, {'categoria': 'COSTUME DESIGN (Black-and-White)', 'ano': 1949}, None, None, {'categoria': 'BEST MOTION PICTURE', 'ano': 1949}, None, None, None, None, None, None] |
-| The Concert | [1975, 1964] | [None, None] |
-| Sundays and Cybele | [1963, 1964] | [{'categoria': 'FOREIGN LANGUAGE FILM', 'ano': 1963}, None, None] |
-| Malcolm X | [1973, 1993] | [None, None, None] |
-| Kon-Tiki | [1952, 2013] | [{'categoria': 'DOCUMENTARY (Feature)', 'ano': 1952}, None] |
-| Imitation of Life | [1935, 1960] | [None, None, None, None, None] |
+| Through a Glass Darkly | [1962, 1963] | [{'categoria': 'FOREIGN LANGUAGE FILM', 'ano': 1962}, None] |
+| The Invisible Woman | [1942, 2014] | [None, None] |
+| Marriage Italian Style | [1966, 1965] | [None, None] |
+| The Emigrants | [1973, 1972] | [None, None, None, None, None] |
+| Cyrano de Bergerac | [1991, 1951] | [{'categoria': 'ACTOR', 'ano': 1951}, None, None, {'categoria': 'COSTUME DESIGN', 'ano': 1991}, None, None] |
+| Romeo and Juliet | [1937, 1969] | [None, None, None, None, {'categoria': 'CINEMATOGRAPHY', 'ano': 1969}, {'categoria': 'COSTUME DESIGN', 'ano': 1969}, None, None] |
+| Goodbye, Mr. Chips | [1970, 1940] | [{'categoria': 'ACTOR', 'ano': 1940}, None, None, None, None, None, None, None, None] |
+| Madame Bovary | [1992, 1950] | [None, None] |
+| When Ladies Meet | [1942, 1933] | [None, None] |
+| West Side Story | [2022, 1962] | [{'categoria': 'ACTOR IN A SUPPORTING ROLE', 'ano': 1962}, {'categoria': 'ACTRESS IN A SUPPORTING ROLE', 'ano': 1962}, {'categoria': 'ART DIRECTION (Color)', 'ano': 1962}, {'categoria': 'CINEMATOGRAPHY (Color)', 'ano': 1962}, {'categoria': 'COSTUME DESIGN (Color)', 'ano': 1962}, {'categoria': 'DIRECTING', 'ano': 1962}, {'categoria': 'FILM EDITING', 'ano': 1962}, {'categoria': 'MUSIC (Scoring of a Musical Picture)', 'ano': 1962}, {'categoria': 'BEST MOTION PICTURE', 'ano': 1962}, {'categoria': 'SOUND', 'ano': 1962}, None, {'categoria': 'ACTRESS IN A SUPPORTING ROLE', 'ano': 2022}, None, None, None, None, None, None] |
+| The Color Purple | [2024, 1986] | [None, None, None, None, None, None, None, None, None, None, None, None] |
+| Les Misérables | [2013, 2020] | [None, {'categoria': 'ACTRESS IN A SUPPORTING ROLE', 'ano': 2013}, None, {'categoria': 'MAKEUP AND HAIRSTYLING', 'ano': 2013}, None, None, None, {'categoria': 'SOUND MIXING', 'ano': 2013}, None] |
+| Scent of a Woman | [1976, 1993] | [None, None, {'categoria': 'ACTOR IN A LEADING ROLE', 'ano': 1993}, None, None, None] |
+| Titanic | [1998, 1954] | [None, {'categoria': 'WRITING (Story and Screenplay)', 'ano': 1954}, None, None, {'categoria': 'ART DIRECTION', 'ano': 1998}, {'categoria': 'CINEMATOGRAPHY', 'ano': 1998}, {'categoria': 'COSTUME DESIGN', 'ano': 1998}, {'categoria': 'DIRECTING', 'ano': 1998}, {'categoria': 'FILM EDITING', 'ano': 1998}, None, {'categoria': 'MUSIC (Original Dramatic Score)', 'ano': 1998}, {'categoria': 'MUSIC (Original Song)', 'ano': 1998}, {'categoria': 'BEST PICTURE', 'ano': 1998}, {'categoria': 'SOUND', 'ano': 1998}, {'categoria': 'SOUND EFFECTS EDITING', 'ano': 1998}, {'categoria': 'VISUAL EFFECTS', 'ano': 1998}] |
+| Marie Antoinette | [2007, 1939] | [None, None, None, None, {'categoria': 'COSTUME DESIGN', 'ano': 2007}] |
+| The Lion King | [1995, 2020] | [{'categoria': 'MUSIC (Original Score)', 'ano': 1995}, {'categoria': 'MUSIC (Original Song)', 'ano': 1995}, None, None, None] |
+| King Kong | [1977, 2006] | [None, None, {'categoria': 'SPECIAL ACHIEVEMENT AWARD (Visual Effects)', 'ano': 1977}, None, {'categoria': 'SOUND EDITING', 'ano': 2006}, {'categoria': 'SOUND MIXING', 'ano': 2006}, {'categoria': 'VISUAL EFFECTS', 'ano': 2006}] |
+| True Grit | [2011, 1970] | [{'categoria': 'ACTOR', 'ano': 1970}, None, None, None, None, None, None, None, None, None, None, None] |
+| Contact | [1993, 1998] | [None, None] |
+| All Quiet on the Western Front | [1930, 2023] | [None, {'categoria': 'DIRECTING', 'ano': 1930}, {'categoria': 'OUTSTANDING PRODUCTION', 'ano': 1930}, None, {'categoria': 'CINEMATOGRAPHY', 'ano': 2023}, {'categoria': 'INTERNATIONAL FEATURE FILM', 'ano': 2023}, None, {'categoria': 'MUSIC (Original Score)', 'ano': 2023}, None, {'categoria': 'PRODUCTION DESIGN', 'ano': 2023}, None, None, None, {'categoria': 'BEST INTERNATIONAL FEATURE FILM', 'ano': 2023}] |
 
 ---
 
@@ -1498,25 +1497,25 @@ db.indicados.aggregate([{$match: {vencedor: true}}, {$group: {_id: "$nome_do_fil
 | _id | oscars |
 |---|---|
 | Titanic | 12 |
-| West Side Story | 11 |
-| The Lord of the Rings: The Return of the King | 11 |
 | Ben-Hur | 11 |
-| Gigi | 9 |
-| The English Patient | 9 |
+| The Lord of the Rings: The Return of the King | 11 |
+| West Side Story | 11 |
 | The Last Emperor | 9 |
-| Gandhi | 8 |
-| Amadeus | 8 |
-| From Here to Eternity | 8 |
+| The English Patient | 9 |
+| Gigi | 9 |
 | On the Waterfront | 8 |
 | Cabaret | 8 |
-| Gone with the Wind | 8 |
-| Slumdog Millionaire | 8 |
 | My Fair Lady | 8 |
-| Schindler's List | 7 |
-| The Bridge on the River Kwai | 7 |
-| The Best Years of Our Lives | 7 |
+| From Here to Eternity | 8 |
+| Amadeus | 8 |
+| Gone with the Wind | 8 |
+| Gandhi | 8 |
+| Slumdog Millionaire | 8 |
+| Oppenheimer | 7 |
+| Patton | 7 |
 | The Sting | 7 |
-| Everything Everywhere All at Once | 7 |
+| Going My Way | 7 |
+| Schindler's List | 7 |
 
 ---
 
@@ -1537,20 +1536,20 @@ múltiplas queries por década com $match no ano_cerimonia
 | It Happened One Night | 5 |
 | Anthony Adverse | 4 |
 | The Informer | 4 |
-| The Life of Emile Zola | 3 |
-| The Adventures of Robin Hood | 3 | |
+| Cavalcade | 3 |
+| Cimarron | 3 | |
 | `1940s` | | _id | oscars |
 |---|---|
 | Gone with the Wind | 8 |
-| The Best Years of Our Lives | 7 |
 | Going My Way | 7 |
+| The Best Years of Our Lives | 7 |
 | Mrs. Miniver | 6 |
-| Wilson | 5 | |
+| How Green Was My Valley | 5 | |
 | `1950s` | | _id | oscars |
 |---|---|
 | Gigi | 9 |
-| From Here to Eternity | 8 |
 | On the Waterfront | 8 |
+| From Here to Eternity | 8 |
 | The Bridge on the River Kwai | 7 |
 | An American in Paris | 6 | |
 | `1960s` | | _id | oscars |
@@ -1563,8 +1562,8 @@ múltiplas queries por década com $match no ano_cerimonia
 | `1970s` | | _id | oscars |
 |---|---|
 | Cabaret | 8 |
-| Patton | 7 |
 | The Sting | 7 |
+| Patton | 7 |
 | The Godfather Part II | 6 |
 | Star Wars | 6 | |
 | `1980s` | | _id | oscars |
@@ -1573,35 +1572,35 @@ múltiplas queries por década com $match no ano_cerimonia
 | Gandhi | 8 |
 | Amadeus | 8 |
 | Out of Africa | 7 |
-| Terms of Endearment | 5 | |
+| Raiders of the Lost Ark | 5 | |
 | `1990s` | | _id | oscars |
 |---|---|
 | Titanic | 11 |
 | The English Patient | 9 |
-| Schindler's List | 7 |
 | Dances With Wolves | 7 |
-| Shakespeare in Love | 7 | |
+| Shakespeare in Love | 7 |
+| Schindler's List | 7 | |
 | `2000s` | | _id | oscars |
 |---|---|
 | The Lord of the Rings: The Return of the King | 11 |
 | Slumdog Millionaire | 8 |
 | Chicago | 6 |
-| American Beauty | 5 |
-| The Aviator | 5 | |
+| Gladiator | 5 |
+| American Beauty | 5 | |
 | `2010s` | | _id | oscars |
 |---|---|
 | Gravity | 7 |
 | Mad Max: Fury Road | 6 |
 | The Hurt Locker | 6 |
 | La La Land | 6 |
-| The Artist | 5 | |
+| Hugo | 5 | |
 | `2020s` | | _id | oscars |
 |---|---|
-| Oppenheimer | 7 |
 | Everything Everywhere All at Once | 7 |
+| Oppenheimer | 7 |
 | Dune | 6 |
-| Anora | 5 |
-| Parasite | 5 | |
+| Parasite | 5 |
+| One Battle after Another | 5 | |
 
 ---
 
@@ -1617,25 +1616,25 @@ db.indicados.aggregate([{$match: {vencedor: true, ano_filmagem: {$lt: 1975}}}, {
 
 | _id | ano | oscars |
 |---|---|---|
-| Wings | 1927 | 2 |
-| Underworld | 1927 | 1 |
 | The Dove | 1927 | 1 |
-| Two Arabian Knights | 1927 | 1 |
+| Wings | 1927 | 2 |
 | 7th Heaven | 1927 | 3 |
 | The Last Command | 1927 | 1 |
+| Two Arabian Knights | 1927 | 1 |
 | Sunrise | 1927 | 3 |
+| Underworld | 1927 | 1 |
 | White Shadows in the South Seas | 1928 | 1 |
-| The Patriot | 1928 | 1 |
-| The Divine Lady | 1928 | 1 |
-| Coquette | 1928 | 1 |
-| The Bridge of San Luis Rey | 1928 | 1 |
 | The Broadway Melody | 1928 | 1 |
+| The Bridge of San Luis Rey | 1928 | 1 |
+| Coquette | 1928 | 1 |
+| The Patriot | 1928 | 1 |
 | In Old Arizona | 1928 | 1 |
-| Disraeli | 1929 | 1 |
-| King of Jazz | 1929 | 1 |
-| The Divorcee | 1929 | 1 |
+| The Divine Lady | 1928 | 1 |
 | All Quiet on the Western Front | 1929 | 2 |
+| The Divorcee | 1929 | 1 |
+| Disraeli | 1929 | 1 |
 | With Byrd at the South Pole | 1929 | 1 |
+| King of Jazz | 1929 | 1 |
 | The Big House | 1929 | 2 |
 
 _... e mais 627 registros_
@@ -1656,9 +1655,9 @@ db.indicados.aggregate([{$match: {vencedor: true}}, {$group: {_id: "$ano_cerimon
 |---|---|
 | 1957 | 27 |
 | 1950 | 27 |
-| 1953 | 26 |
-| 1956 | 26 |
-| 1965 | 26 |
+| 1966 | 26 |
+| 1952 | 26 |
+| 1967 | 26 |
 
 ---
 
@@ -1699,26 +1698,26 @@ db.indicados.aggregate([{$group: {_id: "$nome_do_indicado", indicacoes: {$sum: 1
 
 | _id | indicacoes | vitorias |
 |---|---|---|
-| Alex North | 14 | 0 |
 | Thomas Newman | 14 | 0 |
+| Alex North | 14 | 0 |
 | George Folsey | 12 | 0 |
 | Music and Lyric by Diane Warren | 11 | 0 |
-| Walter Lantz, Producer | 10 | 0 |
 | Israel | 10 | 0 |
 | Paramount Studio Sound Department, Loren L. Ryder, Sound Director | 10 | 0 |
+| Walter Lantz, Producer | 10 | 0 |
 | Randy Newman | 9 | 0 |
-| Glenn Close | 8 | 0 |
 | Belgium | 8 | 0 |
+| Glenn Close | 8 | 0 |
 | Peter O'Toole | 8 | 0 |
-| Ingmar Bergman | 8 | 0 |
 | Robert Emmett Dolan | 8 | 0 |
+| Ingmar Bergman | 8 | 0 |
+| George Pal, Producer | 7 | 0 |
+| James Newton Howard | 7 | 0 |
 | Richard Burton | 7 | 0 |
 | Bill Thomas | 7 | 0 |
-| James Newton Howard | 7 | 0 |
-| George Pal, Producer | 7 | 0 |
-| Bruno Delbonnel | 6 | 0 |
-| Herbert Morgan, Producer | 6 | 0 |
-| Samuel Goldwyn Studio Sound Department, Thomas T. Moulton, Sound Director | 6 | 0 |
+| Republic Studio Sound Department, Daniel J. Bloomberg, Sound Director | 6 | 0 |
+| Samuel Goldwyn Studio Sound Department, Gordon E. Sawyer, Sound Director | 6 | 0 |
+| Deborah Kerr | 6 | 0 |
 
 ---
 
@@ -1883,11 +1882,11 @@ db.indicados.aggregate([{$match: {categoria: {$in: [...]}, vencedor: true}}, {$s
 
 | ano_cerimonia | nome_do_filme |
 |---|---|
-| 1984 | Terms of Endearment |
-| 2004 | The Lord of the Rings: The Return of the King |
-| 1978 | Annie Hall |
-| 2015 | Birdman or (The Unexpected Virtue of Ignorance) |
-| 1987 | Platoon |
+| 1986 | Out of Africa |
+| 2017 | Moonlight |
+| 2006 | Crash |
+| 2024 | Oppenheimer |
+| 2016 | Spotlight |
 
 ---
 
@@ -1951,4 +1950,3 @@ db.indicados.aggregate([{$facet: { total_indicacoes: [{$count: 'total'}], total_
 | `total_categorias_unicas` | `115` |
 
 ---
-# oscar-analisys
